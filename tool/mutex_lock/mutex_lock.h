@@ -13,6 +13,6 @@ class MutexLockGraud final{
 	    _mtx.unlock();
 	}
     private:
-	std::mutex _mtx;
+	    std::mutex& _mtx;
 };
 #endif
