@@ -4,12 +4,15 @@
 #include<mutex>
 #include<thread>
 
-class MutexLock{
+class MutexLockGraud final{
     public:
-        
+	explicit MutexLockGraud(std::mutex &mtx):_mtx(mtx){
+	    _mtx.lock();
+	}
+	~MutexLockGraud(){
+	    _mtx.unlock();
+	}
     private:
-        std::mutex _mtx;
-        int holder_;
-}
-
+	std::mutex _mtx;
+};
 #endif
